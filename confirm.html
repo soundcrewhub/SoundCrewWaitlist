@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>You're In — SoundCrew</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="center-screen">
+    <div class="card">
+      <h1 class="h1">You're on the list ✅</h1>
+      <p class="sub">We'll email you updates, early access, and community picks.</p>
+
+      <div class="row">
+        <a class="btn ghost" href="join.html">Change email</a>
+      </div>
+
+      <p class="mini">© <span id="y"></span> SoundCrew</p>
+    </div>
+  </main>
+
+  <div class="logo-fixed">
+    <img src="Logo.png" alt="SoundCrew logo">
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

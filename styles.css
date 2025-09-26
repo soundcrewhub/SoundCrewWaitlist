@@ -1,0 +1,71 @@
+:root{
+  --bg:#000;
+  --text:#EAF6FF;
+  --muted:#B8C6D1;
+  --cyan:#12B4FF;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+.center-screen{
+  min-height:100dvh;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+}
+.card{ text-align:center; }
+.h1{
+  font-size:clamp(28px,6.5vw,72px);
+  font-weight:800;
+  letter-spacing:.2px;
+  color:var(--cyan);
+  margin:0 0 16px;
+}
+.sub{ color:#E5E7EB; font-size:clamp(16px,2.2vw,20px); margin:0 0 28px; }
+.row{ display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:16px 28px;
+  background:var(--cyan); color:#041018;
+  border:none; border-radius:14px;
+  font-weight:700; font-size:18px; letter-spacing:.3px;
+  cursor:pointer; transition:transform .12s ease, filter .12s ease;
+  text-decoration:none;
+  min-width:160px;
+  text-align:center;
+}
+.btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+.btn.ghost{ background:transparent; color:var(--cyan); border:2px solid var(--cyan); }
+.mini{ color:#8FA2B0; font-size:13px; margin-top:20px; text-align:center }
+.form{ max-width:520px; margin:0 auto; text-align:left }
+.fld{ display:grid; gap:8px; margin:12px 0 4px; }
+label{ color:#CFE3F5; font-size:14px; }
+input[type="email"]{
+  width:100%; padding:14px 16px;
+  border-radius:12px; border:2px solid #0b0b0b;
+  background:#07090b; color:var(--text); outline:none;
+}
+input:focus{ border-color:#0f2533; box-shadow:0 0 0 3px rgba(18,180,255,.2); }
+.role-pill{
+  display:inline-block; margin-bottom:12px;
+  padding:8px 12px; border-radius:999px;
+  background:#06131b; color:#9EDBFF; border:1px solid #0b2230;
+  font-size:13px; letter-spacing:.2px;
+}
+.logo-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+.logo-fixed img {
+  width: 90px;
+  height: auto;
+  opacity: 0.9;
+  transition: opacity .2s ease;
+}
+.logo-fixed img:hover { opacity: 1; }

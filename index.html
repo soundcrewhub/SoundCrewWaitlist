@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to SoundCrew</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="center-screen">
+    <div class="card">
+      <h1 class="h1">Welcome to SoundCrew</h1>
+      <p class="sub">Select your role to continue</p>
+
+      <div class="row">
+        <a class="btn" href="join.html?role=Artist">Artist</a>
+        <a class="btn" href="join.html?role=Producer">Producer</a>
+      </div>
+
+      <p class="mini">© <span id="y"></span> SoundCrew</p>
+    </div>
+  </main>
+
+  <div class="logo-fixed">
+    <img src="Logo.png" alt="SoundCrew logo">
+  </div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

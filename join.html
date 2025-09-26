@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join SoundCrew</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="center-screen">
+    <div class="card" style="max-width:640px;">
+      <h1 class="h1">Join SoundCrew</h1>
+      <p class="sub">Enter your email to get early access.</p>
+
+      <div id="role" class="role-pill">Role: —</div>
+
+      <form class="form" id="form" novalidate>
+        <div class="fld">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@email.com" required />
+        </div>
+
+        <div class="row" style="margin-top:14px;">
+          <button class="btn" type="submit">Join SoundCrew</button>
+          <a class="btn ghost" href="index.html">Back</a>
+        </div>
+      </form>
+
+      <p class="mini" id="msg" style="display:none;">Submitting...</p>
+      <p class="mini">© <span id="y"></span> SoundCrew</p>
+    </div>
+  </main>
+
+  <div class="logo-fixed">
+    <img src="Logo.png" alt="SoundCrew logo">
+  </div>
+
+  <script>
+    (function () {
+      const url = new URL(window.location.href);
+      const q = url.searchParams.get('role');
+      const allowed = ['Artist', 'Producer'];
+      const role = allowed.includes(q) ? q : 'Artist';
+      document.getElementById('role').textContent = 'Role: ' + role;
+      sessionStorage.setItem('sc_role', role);
+      document.getElementById('y').textContent = new Date().getFullYear();
+    })();
+
+    const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbwYjGAf2oos8VCBqloVBm9N7Bn3m8rO5jeB481qlevq8OXGZje-Duxy9VkyQut0VvXyqA/exec";
+
+    document.getElementById('form').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Please enter a valid email."); return; }
+      const role = sessionStorage.getItem('sc_role') || 'Artist';
+      const msg = document.getElementById('msg');
+      msg.style.display='block';
+
+      const data = new URLSearchParams();
+      data.append('email', email);
+      data.append('role', role);
+
+      try {
+        await fetch(SHEETS_ENDPOINT, {
+          method:'POST',
+          mode:'no-cors',
+          headers: { 'Content-Type':'application/x-www-form-urlencoded' },
+          body: data.toString()
+        });
+      } catch (err) {
+        console.warn('Fetch error', err);
+      } finally {
+        window.location.href = "confirm.html";
+      }
+    });
+  </script>
+</body>
+</html>
